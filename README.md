@@ -1,2 +1,2 @@
 # JEIBukkit
-JEIBukkit1
+JEIBukkit
