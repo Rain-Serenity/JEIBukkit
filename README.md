@@ -1,2 +1,4 @@
 # JEIBukkit
 JEIBukkit
+将Bukkit服务器中的配方自动传递给玩家
+适用于JEI
