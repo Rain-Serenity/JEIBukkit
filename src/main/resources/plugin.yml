@@ -1,0 +1,29 @@
+name: JEIBukkit
+version: "${version}"
+main: com.rserene.chosen.server.jeibukkit.JEIBukkit
+api-version: '26.1.2'
+load: POSTWORLD
+description: 将服务器配方同步到 Minecraft 1.21.2+ 的 JEI 客户端
+author: Chosen_1st
+website: https://github.com/rserene/JEIBukkit
+
+commands:
+  jeisync:
+    description: 手动同步配方到 JEI 客户端
+    usage: /<command> [玩家]
+    permission: jeibukkit.sync
+    permission-message: 你没有使用此命令的权限。
+
+permissions:
+  jeibukkit.sync:
+    description: 允许同步 JEI 配方
+    default: true
+  jeibukkit.sync.others:
+    description: 允许为其他玩家同步 JEI 配方
+    default: op
+  jeibukkit.*:
+    description: 拥有所有 JEIBukkit 权限
+    default: op
+    children:
+      jeibukkit.sync: true
+      jeibukkit.sync.others: true
