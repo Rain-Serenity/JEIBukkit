@@ -5,7 +5,7 @@ api-version: '26.1.2'
 load: POSTWORLD
 description: 将服务器配方同步到 Minecraft 1.21.2+ 的 JEI 客户端
 author: Chosen_1st
-website: https://github.com/rserene/JEIBukkit
+website: https://www.RSerene.com/
 
 commands:
   jeisync:
