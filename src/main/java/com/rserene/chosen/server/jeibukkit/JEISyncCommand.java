@@ -109,16 +109,33 @@ public class JEISyncCommand implements CommandExecutor, TabCompleter {
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, String[] args) {
         List<String> completions = new ArrayList<>();
         
-        // 只有拥有权限的玩家才能查看其他玩家列表
-        if (args.length == 1 && sender.hasPermission("jeibukkit.sync.others")) {
+        // 只补全第一个参数（玩家名称）
+        if (args.length == 1) {
             String partial = args[0].toLowerCase();
+            
+            // 检查是否有权限为其他玩家同步
+            boolean hasOthersPermission = sender.hasPermission("jeibukkit.sync.others");
             
             // 遍历所有在线玩家，查找匹配的用户名
             for (Player player : Bukkit.getOnlinePlayers()) {
-                if (player.getName().toLowerCase().startsWith(partial)) {
-                    completions.add(player.getName());
+                String playerName = player.getName();
+                
+                // 如果拥有权限，显示所有玩家；否则只显示自己
+                if (hasOthersPermission) {
+                    if (playerName.toLowerCase().startsWith(partial)) {
+                        completions.add(playerName);
+                    }
+                } else if (sender instanceof Player) {
+                    // 普通玩家只能看到自己的名字
+                    Player senderPlayer = (Player) sender;
+                    if (senderPlayer.equals(player) && playerName.toLowerCase().startsWith(partial)) {
+                        completions.add(playerName);
+                    }
                 }
             }
+            
+            // 对结果进行排序，方便查找
+            completions.sort(String.CASE_INSENSITIVE_ORDER);
         }
         
         return completions;
