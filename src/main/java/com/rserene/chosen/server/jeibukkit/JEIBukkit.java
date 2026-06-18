@@ -53,7 +53,7 @@ public final class JEIBukkit extends JavaPlugin {
             
             // 插件完全启动后，向所有在线玩家发送配方数据
             // 延迟 20 刻（1 秒），确保插件完全初始化
-            Bukkit.getScheduler().runTaskLater(this, () -> {
+            Bukkit.getGlobalRegionScheduler().runDelayed(this, scheduledTask -> {
                 for (Player player : Bukkit.getOnlinePlayers()) {
                     recipeSyncManager.syncRecipesToPlayer(player);
                 }

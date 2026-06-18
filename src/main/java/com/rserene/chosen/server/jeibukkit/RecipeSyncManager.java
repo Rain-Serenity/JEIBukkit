@@ -77,7 +77,7 @@ public class RecipeSyncManager {
         }
 
         // 在主线程中调度异步任务，避免直接阻塞玩家加入事件
-        Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+        Bukkit.getAsyncScheduler().runNow(plugin, scheduledTask -> {
             try {
                 ServerPlayer serverPlayer = ((CraftPlayer) player).getHandle();
                 MinecraftServer server = serverPlayer.level().getServer();

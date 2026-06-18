@@ -47,7 +47,7 @@ public class PlayerListener implements Listener {
         
         // 在主线程中延迟执行，等待网络稳定后再发送配方数据
         // 40 刻 = 2 秒，给客户端足够时间建立完整连接
-        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+        Bukkit.getGlobalRegionScheduler().runDelayed(plugin, scheduledTask -> {
             recipeSyncManager.syncRecipesToPlayer(player);
         }, 40L);
     }

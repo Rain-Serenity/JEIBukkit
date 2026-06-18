@@ -2,6 +2,7 @@ name: JEIBukkit
 version: "${version}"
 main: com.rserene.chosen.server.jeibukkit.JEIBukkit
 api-version: '26.1.2'
+folia-supported: true
 load: POSTWORLD
 description: 将服务器配方同步到 Minecraft 1.21.2+ 的 JEI 客户端
 author: Chosen_1st
